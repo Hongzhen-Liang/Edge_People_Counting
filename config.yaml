@@ -1,0 +1,14 @@
+share_settings:
+  rtsp_stream: rtsp://localhost:8554/mystream
+  FPS: 10
+
+model_settings:
+  model_path: models/yolo11n.pt
+  line_position_scale: 0.5
+  detect_classes:
+    - car
+    - person
+
+server_settings:
+  video_path: videos/cross_simple.mp4
+
