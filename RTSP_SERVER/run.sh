@@ -11,9 +11,10 @@ video_path=$(yq '.server_settings.video_path' ../config.yaml)
 FPS=$(yq '.share_settings.FPS' ../config.yaml)
 
 # 启动第二个命令 (ffmpeg 推流)
-ffmpeg -re -stream_loop -1 -i $video_path -r $FPS -c copy \
--fifo_size 5000000 -rtsp_transport tcp -buffer_size 10000000 \
--max_delay 500000 -f rtsp $rtsp_stream &
+ffmpeg -re -stream_loop -1 -i $video_path -r $FPS \
+-refs 4 -fflags +discardcorrupt -flags2 +export_mvs -err_detect ignore_err -skip_frame nokey -analyzeduration 100M -probesize 100M \
+-fifo_size 5000000 -rtsp_transport tcp -buffer_size 20000000 \
+-max_delay 1000000 -c copy -f rtsp $rtsp_stream &
 
 # 获取第二个进程的 PID
 PID2=$!

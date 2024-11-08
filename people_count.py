@@ -20,8 +20,8 @@ model = YOLO(model_path)  # load a custom model
 
 cap = cv2.VideoCapture(rtsp_stream)
 cap.set(cv2.CAP_PROP_FPS, FPS) 
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 160)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 120)
 
 
 # 循环处理视频帧
